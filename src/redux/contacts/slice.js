@@ -13,20 +13,21 @@ const contactsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.pending, state => {
-        state.isLoading = true;
+        state.error = false;
+        state.loading = true;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.isLoading = true;
+        state.loading = false;
         state.error = false;
         state.items = action.payload;
-        state.loading = false;
       })
       .addCase(fetchContacts.rejected, (state, action) => {
-        state.isLoading = false;
+        state.loading = false;
         state.error = action.payload;
       })
       .addCase(addContacts.pending, state => {
-        state.isLoading = true;
+        state.error = false;
+        state.loading = true;
       })
       .addCase(addContacts.fulfilled, (state, action) => {
         state.loading = false;
@@ -34,23 +35,22 @@ const contactsSlice = createSlice({
         state.items.push(action.payload);        
       })
       .addCase(addContacts.rejected, (state, action) => {
-        state.isLoading = false;
+        state.loading = false;
         state.error = action.payload;
       })
       .addCase(deleteContacts.pending, state => {
-        state.isLoading = true;
+        state.error = false;
+        state.loading = true;
       })
       .addCase(deleteContacts.fulfilled, (state, action) => {
-        state.isLoading = true;
+        state.loading = false;
         state.error = false;
-        const index = state.items.findIndex(
-          contact => contact.id === action.payload.id
+        state.items = state.items.filter(
+          (item) => item.id !== action.payload.id
         );
-        state.items.splice(index, 1);
-        state.isLoading = false;
       })
       .addCase(deleteContacts.rejected, (state, action) => {
-        state.isLoading = false;
+        state.loading = false;
         state.error = action.payload;
       });
     },
@@ -60,6 +60,7 @@ const contactsSlice = createSlice({
 export const selectContacts = (state) => state.contacts.items;
 export const selectLoading = (state) => state.contacts.loading;
 export const selectError = (state) => state.contacts.error;
+export const state = (state) => state;
 
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectNameFilter],
