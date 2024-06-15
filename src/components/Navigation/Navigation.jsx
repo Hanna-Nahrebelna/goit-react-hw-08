@@ -5,10 +5,10 @@ export default function Navigation() {
 
   return (
     <nav>
-      <NavLink className={css.link} to="/">
+      <NavLink className={css.linkHome} to="/">
         Home
       </NavLink>
-      <NavLink className={css.link} to="/contacts">
+      <NavLink className={css.linkContacts} to="/contacts">
         Contacts
       </NavLink>
     </nav>
