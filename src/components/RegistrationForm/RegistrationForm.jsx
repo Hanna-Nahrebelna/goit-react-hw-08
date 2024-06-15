@@ -21,18 +21,18 @@ export default function RegistrationForm() {
     >
       <Form className={css.form} autoComplete="off">
         <label className={css.label}>
-          Username
-          <Field type="text" name="name" />
+          Name
+          <Field type="text" name="name" className={css.input} />
         </label>
         <label className={css.label}>
           Email
-          <Field type="email" name="email" />
+          <Field type="email" name="email" className={css.input} />
         </label>
         <label className={css.label}>
           Password
-          <Field type="password" name="password" />
+          <Field type="password" name="password" className={css.input} />
         </label>
-        <button type="submit">Register</button>
+        <button type="submit" className={css.buttom}>Register</button>
       </Form>
     </Formik>
   );
