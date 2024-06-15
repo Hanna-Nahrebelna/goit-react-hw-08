@@ -1,0 +1,24 @@
+.form {
+  width: 250px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-top: 20px;
+  border-radius: 8px;
+  border: 1px solid #8a8989;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.input {
+  width: 220px;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.btn {
+  margin-top: 15px;
+  border: 1px solid #8a8989;
+  margin-left: 73px;
+  color: rgb(115, 2, 196)
+}
