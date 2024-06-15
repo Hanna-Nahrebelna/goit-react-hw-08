@@ -1,5 +1,5 @@
 import PageTitle from "../../components/PageTitle/PageTitle";
-import css from "./CantactsPage.module.css";
+import css from "./ContactsPage.module.css";
 
 export default function ContactPage() {
   return (

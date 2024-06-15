@@ -2,9 +2,9 @@
   width: 900px;
 }
 
-h1 {
-  margin-left: 100px;
-  font-size: 40px;
+.title {
+  margin-left: 150px;
+  font-size: 30px;
 }
 
 .span {
