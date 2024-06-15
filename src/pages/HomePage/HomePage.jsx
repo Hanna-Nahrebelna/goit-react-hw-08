@@ -4,7 +4,7 @@ import css from "./HomePage.module.css";
 export default function HomePage() {
   return (
     <div className={css.container}>
-      <PageTitle>
+      <PageTitle className={css.titleHomePage}>
         Contact manager welcome page{" "}
         <span role="img" aria-label="Greeting icon" className={css.span}>
           💁‍♀️
