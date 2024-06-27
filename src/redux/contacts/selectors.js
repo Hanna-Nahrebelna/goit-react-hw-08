@@ -1,1 +1,0 @@
-export const selectIsLoggendIn = (state) => state.auth.isLoggedIn;
