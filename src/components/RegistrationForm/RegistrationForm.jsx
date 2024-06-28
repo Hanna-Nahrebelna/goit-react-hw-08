@@ -16,12 +16,12 @@ export default function RegistrationForm() {
     actions.resetForm();
   };
 
-return (   
-  <Formik
-    initialValues={{
-      name: "",
-      email: "",
-      password: "",
+  return (      
+      <Formik
+      initialValues={{
+        name: "",
+        email: "",
+        password: "",
     }}
     onSubmit={handleSubmit}
   >

@@ -1,24 +1,34 @@
 import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
+import toast, { Toaster} from "react-hot-toast";
 import { logIn } from "../../redux/auth/operations";
 import css from "./LoginForm.module.css";
+
 
 export default function LoginForm() { 
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(logIn(values));
+    dispatch(logIn(values))
+    .unwrap()
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+        toast.error("Oops, something went wrong...");
+      });
     actions.resetForm();
   };
 
   return (
-    <Formik
-      initialValues={{
-        email: "",
-        password: "",
-      }}
-      onSubmit={handleSubmit}
-    >
+    <div>
+      <Toaster position="top-center" reverseOrder={false} />    
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        onSubmit={handleSubmit}
+      >
       <Form className={css.form} autoComplete="off">
         <label className={css.label}>
           Email
@@ -28,8 +38,11 @@ export default function LoginForm() {
           Password
           <Field type="password" name="password" className={css.input}/>
         </label>
-        <button type="submit" className={css.btn}> Log In</button>
+        <button type="submit" className={css.btn}>
+          Log In
+        </button>
       </Form>
-    </Formik>
+      </Formik>
+      </div>
   );
 }
