@@ -18,11 +18,19 @@ export const report = () => toast.success("Successfully!");
 export const register = createAsyncThunk(
   "auth/register",
   async (newUser, thunkAPI) => {
+    console.log('Register payload:', newUser);
     try {
-      const res = await axios.post("/users/signup", newUser);
+      const res = await axios.post("/users/signup", newUser,
+        {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      );
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
+      console.log('Error response:', error.response);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
